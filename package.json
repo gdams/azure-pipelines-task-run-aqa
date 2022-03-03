@@ -1,0 +1,48 @@
+{
+  "scripts": {
+    "build": "npm run tslint:fix && webpack --config=webpack.config.js --env %BUILD_ENV%",
+    "build:package": "npm run build && npm run package",
+    "clean": "rimraf ./dist",
+    "clean:build": "npm run clean && npm run build",
+    "tslint": "tslint --project tsconfig.json --config tslint.json",
+    "tslint:fix": "tslint --project tsconfig.json --fix --config tslint.json",
+    "test": "jest --verbose --coverage --coverageDirectory=coverage/",
+    "start": "node --no-deprecation dist/custom-task/main.js",
+    "clean:task": "tfx build tasks delete --task-id {{put_task_guid_here}} --token %ADO_PAT% --service-url %ADO_ACCOUNT_URI%",
+    "publish:task": "tfx build tasks upload --task-path dist/custom-task --overwrite --token %ADO_PAT% --service-url %ADO_ACCOUNT_URI%",
+    "clean:publish:task": "npm run clean:task && npm run publish:task",
+    "package": "cd dist && tfx extension create --manifest-globs base.json %BUILD_ENV%.json --output-path %BUILD_ENV%.vsix --publisher %DEV_PUBLISHER% && cd ../",
+    "publish": "tfx extension publish --vsix dist/ado-extension/%BUILD_ENV%.vsix --token %ADO_PAT%",
+    "dev": "npm run build && npm run package && npm run publish && npm run clean:publish:task",
+    "dev:task": "npm run build && npm run clean:publish:task"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.1",
+    "@types/node": "^10.17.6",
+    "@types/q": "^1.5.1",
+    "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "jest": "^24.9.0",
+    "jest-xunit": "^1.0.11",
+    "replace-in-file-webpack-plugin": "^1.0.6",
+    "rimraf": "^3.0.0",
+    "string-replace-loader": "^2.1.1",
+    "style-loader": "^1.0.0",
+    "tfx-cli": "^0.6.3",
+    "ts-jest": "^24.2.0",
+    "ts-loader": "^5.3.0",
+    "ts-node": "^8.5.2",
+    "tslint": "^5.15.0",
+    "tslint-loader": "3.5.4",
+    "typescript": "^3.7.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "name": "azure-pipelines-custom-task",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "azure-devops-node-api": "^7.2.0",
+    "azure-pipelines-task-lib": "^2.9.3"
+  }
+}

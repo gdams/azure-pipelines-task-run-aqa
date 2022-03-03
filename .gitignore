@@ -1,0 +1,13 @@
+node_modules
+dist
+/**/.vsix
+/.vs
+/**/.taskkey
+/**/*.vsix
+/**/*.zip
+.DS_Store
+npm-debug.log
+coverage
+test-report.xml
+test-report.html
+test-report.json

@@ -1,0 +1,25 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "target": "ES6",
+        "lib": [
+            "es6",
+            "es2017"
+        ],
+        "types": [
+            "jest",
+            "node"
+        ],
+        "typeRoots": ["./src/types", "node_modules/@types"],
+    },
+    "include": [
+        "src/**/*.ts",
+        "tests/**/*.ts"
+    ]
+}
