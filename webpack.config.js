@@ -28,7 +28,7 @@ module.exports = env => {
     const config = {
 
         entry: {
-            "main": "./src/custom-task/main.ts",
+            "main": "./src/run-aqa/main.ts",
         },
 
         plugins: [
@@ -36,20 +36,20 @@ module.exports = env => {
                 // These files are needed by azure-pipelines-task-lib library.
                 {
                     from: path.resolve("./node_modules/azure-pipelines-task-lib/lib.json"),
-                    to: path.join(Target, "custom-task")
+                    to: path.join(Target, "run-aqa")
                 },
                 {
                     from: path.resolve("./node_modules/azure-pipelines-task-lib/Strings"),
-                    to: path.join(Target, "custom-task")
+                    to: path.join(Target, "run-aqa")
                 },
 
                 {
-                    from: path.join(__dirname, "./src/custom-task/task.json"),
-                    to: path.join(Target, "custom-task")
+                    from: path.join(__dirname, "./src/run-aqa/task.json"),
+                    to: path.join(Target, "run-aqa")
                 },
                 {
                     from: path.join(__dirname, "./images/icon.png"),
-                    to: path.join(Target, "custom-task", "icon.png")
+                    to: path.join(Target, "run-aqa", "icon.png")
                 },
                 {
                     from: path.join(__dirname, "./manifests/base.json"),
@@ -70,11 +70,11 @@ module.exports = env => {
             ]),
 
             WebpackCommon.PackageJsonLoadFixer(Target, [
-                "custom-task/main.js",
+                "run-aqa/main.js",
             ]),
 
             WebpackCommon.VersionStringReplacer(Target, [
-                "custom-task/task.json",
+                "run-aqa/task.json",
                 "base.json"
             ]),
 
@@ -82,8 +82,8 @@ module.exports = env => {
                 {
                     dir: Target,
                     files: [
-                        "custom-task/main.js",
-                        "custom-task/task.json",
+                        "run-aqa/main.js",
+                        "run-aqa/task.json",
                         "base.json"
                     ],
                     rules: [
@@ -107,5 +107,5 @@ module.exports = env => {
         ],
     };
 
-    return WebpackCommon.FillDefaultNodeSettings(config, env, "custom-task");
+    return WebpackCommon.FillDefaultNodeSettings(config, env, "run-aqa");
 };

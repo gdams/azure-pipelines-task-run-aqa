@@ -1,0 +1,118 @@
+{
+    "id": "{{taskid}}",
+    "name": "RunAQA",
+    "friendlyName": "Run AQA",
+    "description": "An action to run AQA tests with specific JDK on specific platform",
+    "categories": [
+        "Test"
+    ],
+    "author": "{{author}}",
+    "version": {
+        "Major": "{{major}}",
+        "Minor": "{{minor}}",
+        "Patch": "{{patch}}"
+    },
+    "execution": {
+        "Node": {
+            "target": "main.js"
+        }
+    },
+    "inputs": [
+        {
+            "name": "jdksource",
+            "type": "string",
+            "label": "JDK Source",
+            "defaultValue": "upstream",
+            "required": true,
+            "helpMarkDown": "The source of test against JDK. Default is upstream. Supported values are [upstream, install-jdk, github-hosted]"
+        },
+        {
+            "name": "customizedSdkUrl",
+            "type": "string",
+            "label": "SDK URL",
+            "helpMarkDown": "If jdksource is nightly or customized, this is the url for customized sdk"
+        },
+        {
+            "name": "sdkdir",
+            "type": "string",
+            "label": "SDK Directory",
+            "helpMarkDown": "If jdksource is nightly or customized, please provide preferred directory to store sdk"
+        },
+        {
+            "name": "version",
+            "type": "integer",
+            "label": "JDK Version",
+            "helpMarkDown": "Testing JDK version (Required when jdksource is github-hosted or install-jdk)"
+        },
+        {
+            "name": "build_list",
+            "type": "string",
+            "label": "Build List",
+            "defaultValue": "openjdk",
+            "required": true,
+            "helpMarkDown": "Test category. The values are openjdk, functional, system, perf, external"
+        },
+        {
+            "name": "target",
+            "type": "string",
+            "label": "JDK Source",
+            "defaultValue": "_jdk_math",
+            "required": true,
+            "helpMarkDown": "The source of test against JDK. Default is upstream. Supported values are [upstream, install-jdk, github-hosted]"
+        },
+        {
+            "name": "custom_target",
+            "type": "string",
+            "label": "Custom Target",
+            "helpMarkDown": "Set customized testcase when any custom target is selected(e.g. jdk_custom, langtools_custom, etc), path to the test class to execute"
+        },
+        {
+            "name": "aqa-testsRepo",
+            "type": "string",
+            "label": "Personal aqa-tests Repo",
+            "helpMarkDown": "For example, octocat/aqa-tests:test"
+        },
+        {
+            "name": "aqa-systemtestsRepo",
+            "type": "string",
+            "label": "Personal aqa-systemtests Repo",
+            "helpMarkDown": "For example, octocat/aqa-systemtests:test"
+        },
+        {
+            "name": "openj9_repoo",
+            "type": "string",
+            "label": "OpenJ9 Repo",
+            "helpMarkDown": "For example, octocat/openj9:test"
+        },
+        {
+            "name": "tkg_Repo",
+            "type": "string",
+            "label": "Personal TKG Repo",
+            "helpMarkDown": "For example, octocat/TKG:test"
+        },
+        {
+            "name": "vendor_testRepos",
+            "type": "string",
+            "label": "Vendor Repositories",
+            "helpMarkDown": "Comma-separated list of vendor repositories"
+        },
+        {
+            "name": "vendor_testBranches",
+            "type": "string",
+            "label": "Vendor Branches",
+            "helpMarkDown": "Comma-separated list of vendor branches"
+        },
+        {
+            "name": "vendor_testDirs",
+            "type": "string",
+            "label": "Vendor Directories",
+            "helpMarkDown": "Comma-separated list of vendor directories"
+        },
+        {
+            "name": "vendor_testShas",
+            "type": "string",
+            "label": "Vendor SHAs",
+            "helpMarkDown": "Comma-separated list of vendor SHAs"
+        }
+    ]
+}

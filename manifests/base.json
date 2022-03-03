@@ -24,19 +24,19 @@
     ],
     "contributions": [
         {
-            "id": "custom-task",
+            "id": "run-aqa",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "custom-task"
+                "name": "run-aqa"
             }
         }
     ],
     "files": [
         {
-            "path": "custom-task",
+            "path": "run-aqa",
             "addressable": true
         }
     ]

@@ -7,9 +7,9 @@
     "tslint": "tslint --project tsconfig.json --config tslint.json",
     "tslint:fix": "tslint --project tsconfig.json --fix --config tslint.json",
     "test": "jest --verbose --coverage --coverageDirectory=coverage/",
-    "start": "node --no-deprecation dist/custom-task/main.js",
+    "start": "node --no-deprecation dist/run-aqa/main.js",
     "clean:task": "tfx build tasks delete --task-id {{put_task_guid_here}} --token %ADO_PAT% --service-url %ADO_ACCOUNT_URI%",
-    "publish:task": "tfx build tasks upload --task-path dist/custom-task --overwrite --token %ADO_PAT% --service-url %ADO_ACCOUNT_URI%",
+    "publish:task": "tfx build tasks upload --task-path dist/run-aqa --overwrite --token %ADO_PAT% --service-url %ADO_ACCOUNT_URI%",
     "clean:publish:task": "npm run clean:task && npm run publish:task",
     "package": "cd dist && tfx extension create --manifest-globs base.json %BUILD_ENV%.json --output-path %BUILD_ENV%.vsix --publisher %DEV_PUBLISHER% && cd ../",
     "publish": "tfx extension publish --vsix dist/ado-extension/%BUILD_ENV%.vsix --token %ADO_PAT%",
@@ -38,11 +38,12 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.1.2"
   },
-  "name": "azure-pipelines-custom-task",
+  "name": "azure-pipelines-run-aqa",
   "private": true,
   "version": "0.0.0",
   "dependencies": {
     "azure-devops-node-api": "^7.2.0",
-    "azure-pipelines-task-lib": "^2.9.3"
+    "azure-pipelines-task-lib": "^2.9.3",
+    "azure-pipelines-tool-lib": "^0.13.3"
   }
 }

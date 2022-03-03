@@ -1,4 +1,4 @@
 {
-    "id": "custom-task-dev",
+    "id": "run-aqa-dev",
     "baseUri": "https://localhost:3000"
   }
